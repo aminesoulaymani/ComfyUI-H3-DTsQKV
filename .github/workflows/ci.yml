@@ -1,0 +1,27 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  compile:
+    # The module cannot be imported without a ComfyUI + torch install, and the real verification is
+    # `selftest.py` run against a ComfyUI checkout. CI only guarantees that every file parses on the
+    # Python versions ComfyUI portable ships with.
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Byte-compile every Python file
+        run: python -m compileall -q -f .
+      - name: Refuse stray backups and core copies
+        run: |
+          if git ls-files | grep -E '\.bak\.|^_backup/|^reference_' ; then
+            echo "backup or upstream core copy tracked in git" ; exit 1
+          fi

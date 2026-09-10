@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# local backups made before edits (never publish)
+*.bak.*
+_backup/
+
+# vanilla ComfyUI core copies used by `selftest.py --reference-dir` (GPL-3.0 upstream, not redistributed here)
+reference_*/
+
+# editors / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

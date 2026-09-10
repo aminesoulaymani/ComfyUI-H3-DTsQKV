@@ -1,0 +1,16 @@
+[project]
+name = "comfyui-h3-dtsqkv"
+description = "Native ComfyUI support for MiniMax H3 DT-sQKV checkpoints (separate Q/K/V projections + rank-16 factorised adaLN) without patching the core; vanilla LoRAs loaded as-is."
+version = "0.1.0"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/aminesoulaymani/ComfyUI-H3-DTsQKV"
+# Used by the Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = "aminesoulaymani"
+DisplayName = "ComfyUI-H3-DTsQKV"
+Icon = ""
